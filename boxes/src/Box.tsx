@@ -1,3 +1,11 @@
+interface IBoxProps {
+  id: string, 
+  width: string,
+  height:  string, 
+  backgroundColor: string,
+  remove: (id: string) => void;
+}
+
 /** Colored box presentation
  *
  * Props:
@@ -9,11 +17,10 @@
  *
  * BoxList -> Box
  */
-
-function Box({ id, width = 5, height = 5, backgroundColor, remove }) {
+function Box({ id, width = "5", height = "5", backgroundColor, remove }: IBoxProps) {
 
   /** Remove a box. */
-  function handleRemove() {
+  function handleRemove():void {
     remove(id);
   }
 
@@ -35,4 +42,6 @@ function Box({ id, width = 5, height = 5, backgroundColor, remove }) {
   );
 }
 
-export default Box;
+
+export default Box
+export type {IBoxProps}

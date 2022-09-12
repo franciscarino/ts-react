@@ -1,23 +1,24 @@
 import React, { useState } from "react";
-import Box from "./Box";
+import Box, {IBoxProps} from "./Box";
 import NewBoxForm from "./NewBoxForm";
+
+type IBox = Omit<IBoxProps, 'remove'>
 
 /** Manage list of boxes
  *
  * State:
  * - boxes: [ { id, width, height, backgroundColor }, ... ]
- */
-
+ */ 
 function BoxList() {
-  const [boxes, setBoxes] = useState([])
+  const [boxes, setBoxes] = useState<IBox[]>([])
 
   /** add box with given { id, width, height, backgroundColor } */
-  function add(newBox) {
+  function add(newBox:IBox):void {
     setBoxes(boxes => [...boxes, newBox]);
   }
 
   /** remove box matching that id. */
-  function remove(id: string) {
+  function remove(id: string):void {
     setBoxes(boxes => boxes.filter(box => box.id !== id));
   }
 
@@ -39,3 +40,4 @@ function BoxList() {
 }
 
 export default BoxList;
+export type {IBox}
